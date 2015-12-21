@@ -4,6 +4,7 @@ using AdventOfCode.Day05;
 using AdventOfCode.Day07;
 using AdventOfCode.Day08;
 using AdventOfCode.Day09;
+using AdventOfCode.Day10;
 using AdventOfCode.Shared;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace AdventConsole
             advent.Add(new Day07());
             advent.Add(new Day08());
             advent.Add(new Day09());
+            advent.Add(new Day10());
 
             var stopwatch = new Stopwatch();
             foreach (var adventDay in advent)

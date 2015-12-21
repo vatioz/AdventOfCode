@@ -78,6 +78,7 @@
     <Compile Include="Day09\Map.cs" />
     <Compile Include="Day09\PathToPlace.cs" />
     <Compile Include="Day09\Place.cs" />
+    <Compile Include="Day10\Day10.cs" />
     <Compile Include="Shared\FileLineParser.cs" />
     <Compile Include="Shared\IAdventDay.cs" />
     <Compile Include="Shared\InputLineParser.cs" />
