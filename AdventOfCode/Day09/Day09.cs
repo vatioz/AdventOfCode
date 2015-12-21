@@ -14,11 +14,13 @@ namespace AdventOfCode.Day09
 
         public string SolvePartOne()
         {
+
             return "Not yet";
         }
 
         public string SolvePartTwo()
         {
+
             return "Not yet";
         }
 
