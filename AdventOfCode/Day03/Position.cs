@@ -24,7 +24,7 @@ namespace AdventOfCode.Day03
             else if (arrow == '<')
                 X--;
             else if (arrow == ' ') // ugly ugly ugly
-                ; // even more ugly
+            { } // still ugly
             else
                 throw new NotImplementedException("Bad arrow");
         }
@@ -35,7 +35,9 @@ namespace AdventOfCode.Day03
             return pos2.X == X && pos2.Y == Y;
         }
 
-
-
+        public override int GetHashCode()
+        {
+            return $"{X}:{Y}".GetHashCode();
+        }
     }
 }
