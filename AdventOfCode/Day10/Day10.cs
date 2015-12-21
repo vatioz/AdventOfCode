@@ -25,7 +25,7 @@ namespace AdventOfCode.Day10
                     numberOfRepeats++;
                 }
 
-                nextSequence.Append($"{numberOfRepeats}{actualDigit}");
+                nextSequence.Append(numberOfRepeats).Append(actualDigit);
             }
 
             return nextSequence.ToString();
