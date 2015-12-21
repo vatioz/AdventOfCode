@@ -1,5 +1,4 @@
 ﻿using AdventOfCode.Shared;
-using System;
 using System.Diagnostics;
 using System.Text;
 
@@ -36,7 +35,7 @@ namespace AdventOfCode.Day10
             for (int i = 0; i < iterations; i++)
             {
                 startingSequence = LookAndSay(startingSequence);
-                Debug.WriteLine($"Iteration {i} done...");
+                Debug.WriteLine($"Iteration {i} done.");
             }
 
             return startingSequence;
