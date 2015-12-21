@@ -71,7 +71,13 @@
     <Compile Include="Day07\Wire.cs" />
     <Compile Include="Day07\WireParser.cs" />
     <Compile Include="Day08\Day08.cs" />
+    <Compile Include="Day08\Unescapeator.cs" />
     <Compile Include="Day09\Day09.cs" />
+    <Compile Include="Day09\Direction.cs" />
+    <Compile Include="Day09\Directions.cs" />
+    <Compile Include="Day09\Map.cs" />
+    <Compile Include="Day09\PathToPlace.cs" />
+    <Compile Include="Day09\Place.cs" />
     <Compile Include="Day10\Day10.cs" />
     <Compile Include="Shared\FileLineParser.cs" />
     <Compile Include="Shared\IAdventDay.cs" />
@@ -84,6 +90,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Day08\Day08TestInput.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Day09\Day09TestInput.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Day09\Day09Input.txt">
