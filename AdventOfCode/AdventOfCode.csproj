@@ -72,6 +72,8 @@
     <Compile Include="Day07\WireParser.cs" />
     <Compile Include="Day08\Day08.cs" />
     <Compile Include="Day09\Day09.cs" />
+    <Compile Include="Day09\Direction.cs" />
+    <Compile Include="Day09\Place.cs" />
     <Compile Include="Shared\FileLineParser.cs" />
     <Compile Include="Shared\IAdventDay.cs" />
     <Compile Include="Shared\InputLineParser.cs" />
