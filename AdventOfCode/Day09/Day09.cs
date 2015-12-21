@@ -26,4 +26,20 @@ namespace AdventOfCode.Day09
 
         public string PuzzleName { get { return "All in a Single Night"; } }
     }
+
+
+    public class Direction
+    {
+        public string PlaceA { get; set; }
+        public string PlaceB { get; set; }
+
+        public int Distance { get; set; }
+    }
+
+    public class Place
+    {
+        public string Name { get; set; }
+
+        public Dictionary<Place, int> NearbyPlaces { get; set; }
+    }
 }
