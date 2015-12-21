@@ -4,7 +4,10 @@ using System.Text.RegularExpressions;
 
 namespace AdventOfCode.Day09
 {
-    [DebuggerDisplay("{PlaceA} --{Distance}--> {PlaceB}")]
+    /// <summary>
+    /// This class represents file input and it maps to single line of input.
+    /// </summary>
+    [DebuggerDisplay("{PlaceA} -- {Distance} --> {PlaceB}")]
     public class Direction
     {
         public static Regex navigRE = new Regex(@"(?<placeA>\w+) to (?<placeB>\w+) = (?<distance>\d+)", RegexOptions.Compiled);

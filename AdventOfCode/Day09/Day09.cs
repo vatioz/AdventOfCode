@@ -6,6 +6,7 @@ namespace AdventOfCode.Day09
 {
     public class Day09 : IAdventDay
     {
+
         #region | ctors
 
         public Day09() : this(@"Day09\Day09Input.txt")
@@ -14,67 +15,29 @@ namespace AdventOfCode.Day09
 
         public Day09(string pathToInputFile)
         {
-            LoadTheMap(pathToInputFile);
+            _visited = new Stack<Place>();
+            _distances = new Dictionary<string, int>();
+
+            var rawDirections = new Directions();
+            rawDirections.LoadDirections(pathToInputFile);
+
+            _graphMap = new Map();
+            _graphMap.LoadMap(rawDirections.ParsedDirections);
         }
 
         #endregion
 
         #region | Fields and properties
 
-        private readonly List<Direction> _directions = new List<Direction>();
-        private readonly Dictionary<string, Place> _places = new Dictionary<string, Place>();
-        private readonly Stack<Place> _visited = new Stack<Place>();
-        private readonly Dictionary<string, int> _distances = new Dictionary<string, int>();
+        private readonly Map _graphMap;
+
+        private readonly Stack<Place> _visited;
+        private readonly Dictionary<string, int> _distances;
         private int _sum;
 
         #endregion
 
-        #region | Parsing the file
 
-        private IEnumerable<string> GetLines(string path)
-        {
-            return FileLineParser.GetAllLines(path);
-        }
-
-        private void LoadTheMap(string path)
-        {
-            var lines = GetLines(path);
-            foreach (var line in lines)
-            {
-                var direction = Direction.Parse(line);
-                _directions.Add(direction);
-            }
-
-            foreach (var direction in _directions)
-            {
-                Place placeA;
-                Place placeB;
-                if (_places.ContainsKey(direction.PlaceA))
-                    placeA = _places[direction.PlaceA];
-                else
-                {
-                    placeA = new Place(direction.PlaceA);
-                    _places.Add(placeA.Name, placeA);
-                }
-
-                if (_places.ContainsKey(direction.PlaceB))
-                    placeB = _places[direction.PlaceB];
-                else
-                {
-                    placeB = new Place(direction.PlaceB);
-                    _places.Add(placeB.Name, placeB);
-                }
-
-                if (!placeA.NearbyPlaces.ContainsKey(placeB))
-                    placeA.NearbyPlaces.Add(placeB, direction.Distance);
-
-                if (!placeB.NearbyPlaces.ContainsKey(placeA))
-                    placeB.NearbyPlaces.Add(placeA, direction.Distance);
-
-            }
-        }
-
-        #endregion
 
         #region | Main interface and logic
 
@@ -97,7 +60,7 @@ namespace AdventOfCode.Day09
         private void FindAllFullConnections()
         {
             _distances.Clear();
-            foreach (var place in _places.Values)
+            foreach (var place in _graphMap.Places)
             {
                 _visited.Clear();
                 _sum = 0;
@@ -109,24 +72,26 @@ namespace AdventOfCode.Day09
         private void HitTheRoad(Place startingPlace)
         {
             _visited.Push(startingPlace);
-            foreach (var nearbyPlacePair in startingPlace.NearbyPlaces)
+            foreach (var nearbyPlace in startingPlace.NearbyPlaces)
             {
-                var distance = nearbyPlacePair.Value;
-                var place = nearbyPlacePair.Key;
-                if (!_visited.Contains(place))
+                if (!_visited.Contains(nearbyPlace.OtherPlace))
                 {
-                    _sum += distance;
-                    HitTheRoad(place);
-                    _sum -= distance;
+                    _sum += nearbyPlace.Distance;
+                    HitTheRoad(nearbyPlace.OtherPlace);
+                    _sum -= nearbyPlace.Distance;
                 }
-
             }
-            if (_visited.Count == _places.Count)
+            if (_visited.Count == _graphMap.Places.Count)
             {
-                var journey = string.Join("-->", _visited.Select(p => p.Name).ToArray());
-                _distances.Add(journey, _sum);
+                RecordCurrentFullJourney();
             }
             _visited.Pop();
+        }
+
+        private void RecordCurrentFullJourney()
+        {
+            var journey = string.Join("-->", _visited.Select(p => p.Name).ToArray());
+            _distances.Add(journey, _sum);
         }
 
         #endregion

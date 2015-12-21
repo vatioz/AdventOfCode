@@ -1,15 +1,31 @@
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace AdventOfCode.Day09
 {
+    /// <summary>
+    /// This class represent a vector in a virtual graph.
+    /// </summary>
     [DebuggerDisplay("{Name}")]
     public class Place
     {
         public Place(string name)
         {
             Name = name;
-            NearbyPlaces = new Dictionary<Place, int>();
+            NearbyPlaces = new List<PathToPlace>();
+        }
+
+        public string Name { get; }
+
+        public List<PathToPlace> NearbyPlaces { get; }
+
+        public void AddNearbyPlace(Place place, int distance)
+        {
+            if (NearbyPlaces.Any(pathToPlace => Equals(pathToPlace.OtherPlace, place)))
+                return;
+
+            NearbyPlaces.Add(new PathToPlace(place, distance));
         }
 
         public override bool Equals(object obj)
@@ -18,8 +34,9 @@ namespace AdventOfCode.Day09
             return plc.Name == this.Name;
         }
 
-        public string Name { get; set; }
-
-        public Dictionary<Place, int> NearbyPlaces { get; set; }
+        public override int GetHashCode()
+        {
+            return Name.GetHashCode();
+        }
     }
 }
