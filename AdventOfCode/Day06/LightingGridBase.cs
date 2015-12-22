@@ -5,7 +5,22 @@ namespace AdventOfCode.Day06
 {
     public abstract class LightingGridBase
     {
-        protected int[,] _grid = new int[1000, 1000];
+        #region | Properties & fields
+
+        protected readonly int[,] _grid;
+
+        #endregion
+
+        #region | ctors
+
+        protected LightingGridBase()
+        {
+            _grid = new int[1000, 1000];
+        }
+
+        #endregion
+
+        #region | Public interface
 
         public void ProcessInstruction(LightInstruction instruction)
         {
@@ -14,9 +29,14 @@ namespace AdventOfCode.Day06
 
         public void ProcessInstruction(string mode, Point from, Point to)
         {
-            for (int i = from.X; i <= to.X; i++)
+            ProcessInstruction(mode, from.X, from.Y, to.X, to.Y);
+        }
+
+        public void ProcessInstruction(string mode, int fromX, int fromY, int toX, int toY)
+        {
+            for (var i = fromX; i <= toX; i++)
             {
-                for (int j = from.Y; j <= to.Y; j++)
+                for (var j = fromY; j <= toY; j++)
                 {
                     switch (mode)
                     {
@@ -36,12 +56,6 @@ namespace AdventOfCode.Day06
             }
         }
 
-        protected abstract void TurnOn(int i, int j);
-
-        protected abstract void Toggle(int i, int j);
-
-        protected abstract void TurnOff(int i, int j);
-
         public void Reset()
         {
             ProcessInstruction("turn off", new Point(0, 0), new Point(999, 999));
@@ -49,15 +63,27 @@ namespace AdventOfCode.Day06
 
         public int HowManyLightsAreLit()
         {
-            int sum = 0;
-            for (int i = 0; i < 1000; i++)
+            var sum = 0;
+            for (var i = 0; i < 1000; i++)
             {
-                for (int j = 0; j < 1000; j++)
+                for (var j = 0; j < 1000; j++)
                 {
                     sum += _grid[i, j];
                 }
             }
             return sum;
         }
+
+        #endregion
+
+        #region | Non-public members
+
+        protected abstract void TurnOn(int i, int j);
+
+        protected abstract void Toggle(int i, int j);
+
+        protected abstract void TurnOff(int i, int j);
+
+        #endregion
     }
 }

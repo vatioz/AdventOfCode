@@ -2,6 +2,8 @@ namespace AdventOfCode.Day06
 {
     public class ShadingLightingGrid : LightingGridBase
     {
+        #region | Overrides
+
         protected override void TurnOn(int i, int j)
         {
             _grid[i, j] += 1;
@@ -17,5 +19,7 @@ namespace AdventOfCode.Day06
             if (_grid[i, j] != 0)
                 _grid[i, j] -= 1;
         }
+
+        #endregion
     }
 }

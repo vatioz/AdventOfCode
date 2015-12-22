@@ -23,7 +23,7 @@ namespace AdventOfCodeTests
         public int TurningOnLights(int fromX, int fromY, int toX, int toY)
         {
             var grid = new BinaryLightingGrid();
-            grid.ProcessInstruction("turn on", new Point(fromX, fromY), new Point(toX, toY));
+            grid.ProcessInstruction("turn on", fromX, fromY, toX, toY);
             return grid.HowManyLightsAreLit();
         }
 
@@ -31,7 +31,7 @@ namespace AdventOfCodeTests
         public void CanReset()
         {
             var grid = new BinaryLightingGrid();
-            grid.ProcessInstruction("turn on", new Point(1, 1), new Point(5, 5));
+            grid.ProcessInstruction("turn on", 1, 1, 5, 5);
             var lightsCount = grid.HowManyLightsAreLit();
             Assert.That(lightsCount, Is.EqualTo(25));
 
@@ -45,15 +45,15 @@ namespace AdventOfCodeTests
         public void CanToggle()
         {
             var grid = new BinaryLightingGrid();
-            grid.ProcessInstruction("turn on", new Point(1, 1), new Point(5, 5));
+            grid.ProcessInstruction("turn on", 1, 1, 5, 5);
             var lightsCount = grid.HowManyLightsAreLit();
             Assert.That(lightsCount, Is.EqualTo(25));
 
-            grid.ProcessInstruction("toggle", new Point(1, 1), new Point(1, 1));
+            grid.ProcessInstruction("toggle", 1, 1, 1, 1);
             lightsCount = grid.HowManyLightsAreLit();
             Assert.That(lightsCount, Is.EqualTo(24));
 
-            grid.ProcessInstruction("toggle", new Point(0, 0), new Point(1, 1));
+            grid.ProcessInstruction("toggle", 0, 0, 1, 1);
             lightsCount = grid.HowManyLightsAreLit();
             Assert.That(lightsCount, Is.EqualTo(28));
         }
@@ -62,11 +62,11 @@ namespace AdventOfCodeTests
         public void CanIncrease()
         {
             var grid = new ShadingLightingGrid();
-            grid.ProcessInstruction("turn on", new Point(0, 0), new Point(0, 0));
+            grid.ProcessInstruction("turn on", 0, 0, 0, 0);
             var lightsCount = grid.HowManyLightsAreLit();
             Assert.That(lightsCount, Is.EqualTo(1));
 
-            grid.ProcessInstruction("turn on", new Point(0, 0), new Point(0, 0));
+            grid.ProcessInstruction("turn on", 0, 0, 0, 0);
             lightsCount = grid.HowManyLightsAreLit();
             Assert.That(lightsCount, Is.EqualTo(2));
         }
@@ -75,7 +75,7 @@ namespace AdventOfCodeTests
         public void CanToggleByTwo()
         {
             var grid = new ShadingLightingGrid();
-            grid.ProcessInstruction("toggle", new Point(0, 0), new Point(999, 999));
+            grid.ProcessInstruction("toggle", 0, 0, 999, 999);
             var lightsCount = grid.HowManyLightsAreLit();
             Assert.That(lightsCount, Is.EqualTo(2000000));
         }
@@ -85,17 +85,17 @@ namespace AdventOfCodeTests
         public void DimmingCannotDropBelowZero()
         {
             var grid = new ShadingLightingGrid();
-            grid.ProcessInstruction("toggle", new Point(0, 0), new Point(999, 999));
+            grid.ProcessInstruction("toggle", 0, 0, 999, 999);
             var lightsCount = grid.HowManyLightsAreLit();
             Assert.That(lightsCount, Is.EqualTo(2000000));
 
-            grid.ProcessInstruction("turn off", new Point(0, 0), new Point(0, 0));
-            grid.ProcessInstruction("turn off", new Point(0, 0), new Point(0, 0));
+            grid.ProcessInstruction("turn off", 0, 0, 0, 0);
+            grid.ProcessInstruction("turn off", 0, 0, 0, 0);
             lightsCount = grid.HowManyLightsAreLit();
             Assert.That(lightsCount, Is.EqualTo(2000000 - 2));
 
-            grid.ProcessInstruction("turn off", new Point(0, 0), new Point(0, 0));
-            grid.ProcessInstruction("turn off", new Point(0, 0), new Point(0, 0));
+            grid.ProcessInstruction("turn off", 0, 0, 0, 0);
+            grid.ProcessInstruction("turn off", 0, 0, 0, 0);
             lightsCount = grid.HowManyLightsAreLit();
             Assert.That(lightsCount, Is.EqualTo(2000000 - 2));
 
