@@ -1,19 +1,17 @@
 ﻿using AdventOfCode.Shared;
-using System.IO;
 
 namespace AdventOfCode.Day02
 {
     public class Day02 : IAdventDay
     {
-        public int CountAllAreas(string lines)
+        public int CountAllAreas(string input)
         {
-            var sr = new StringReader(lines);
-            string line;
-            int sum = 0;
-            while ((line = sr.ReadLine()) != null)
+            var sum = 0;
+            var lines = InputLineParser.GetAllLines(input);
+            foreach (var line in lines)
             {
-                var wrapper = new Wrapper(line);
-                sum += wrapper.Area + wrapper.SmallestArea;
+                var present = new Present(line);
+                sum += present.Area + present.GetSmallestArea();
             }
 
             return sum;
@@ -22,15 +20,14 @@ namespace AdventOfCode.Day02
 
 
 
-        public int CountAllRibbons(string lines)
+        public int CountAllRibbons(string input)
         {
-            var sr = new StringReader(lines);
-            string line;
-            int sum = 0;
-            while ((line = sr.ReadLine()) != null)
+            var sum = 0;
+            var lines = InputLineParser.GetAllLines(input);
+            foreach (var line in lines)
             {
-                var wrapper = new Wrapper(line);
-                sum += wrapper.SmallestPerimeter + wrapper.Volume;
+                var present = new Present(line);
+                sum += present.GetSmallestPerimeter() + present.Volume;
             }
 
             return sum;
@@ -39,9 +36,6 @@ namespace AdventOfCode.Day02
         public string SolvePartOne() => CountAllAreas(Day02Input.RAW_AREAS).ToString();
 
         public string SolvePartTwo() => CountAllRibbons(Day02Input.RAW_AREAS).ToString();
-        public string PuzzleName
-        {
-            get { return "I Was Told There Would Be No Math"; }
-        }
+        public string PuzzleName => "I Was Told There Would Be No Math";
     }
 }

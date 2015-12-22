@@ -46,7 +46,7 @@
     <Compile Include="Day01\Day01Input.cs" />
     <Compile Include="Day02\Day02.cs" />
     <Compile Include="Day02\Day02Input.cs" />
-    <Compile Include="Day02\Wrapper.cs" />
+    <Compile Include="Day02\Present.cs" />
     <Compile Include="Day03\Day03.cs" />
     <Compile Include="Day03\Day03Input.cs" />
     <Compile Include="Day03\Position.cs" />
