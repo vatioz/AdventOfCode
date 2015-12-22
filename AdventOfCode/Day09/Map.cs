@@ -5,14 +5,23 @@ namespace AdventOfCode.Day09
 {
     public class Map
     {
+        #region | Properties & fields
+
+        private readonly Dictionary<string, Place> _places;
+        public List<Place> Places => _places.Values.ToList();
+
+        #endregion
+
+        #region | ctors
+
         public Map()
         {
             _places = new Dictionary<string, Place>();
         }
 
-        private Dictionary<string, Place> _places;
-        public List<Place> Places => _places.Values.ToList();
+        #endregion
 
+        #region | Public interface
 
         public void LoadMap(List<Direction> directions)
         {
@@ -23,16 +32,12 @@ namespace AdventOfCode.Day09
 
                 placeA.AddNearbyPlace(placeB, direction.Distance);
                 placeB.AddNearbyPlace(placeA, direction.Distance);
-
-                /*
-                if (!placeA.NearbyPlaces.Contains(placeB))
-                    placeA.NearbyPlaces.Add(placeB, direction.Distance);
-
-                if (!placeB.NearbyPlaces.ContainsKey(placeA))
-                    placeB.NearbyPlaces.Add(placeA, direction.Distance);
-                */
             }
         }
+
+        #endregion
+
+        #region | Non-public members
 
         private Place GetOrCreatePlace(string placeName)
         {
@@ -46,5 +51,7 @@ namespace AdventOfCode.Day09
             }
             return place;
         }
+
+        #endregion
     }
 }

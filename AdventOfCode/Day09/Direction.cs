@@ -5,27 +5,42 @@ using System.Text.RegularExpressions;
 namespace AdventOfCode.Day09
 {
     /// <summary>
-    /// This class represents file input and it maps to single line of input.
+    ///     This class represents file input and it maps to single line of input.
     /// </summary>
     [DebuggerDisplay("{PlaceA} -- {Distance} --> {PlaceB}")]
     public class Direction
     {
-        public static Regex navigRE = new Regex(@"(?<placeA>\w+) to (?<placeB>\w+) = (?<distance>\d+)", RegexOptions.Compiled);
+        #region |  Constants
 
-        public Direction(string placeA, string placeB, int distance)
+        private static readonly Regex NavigRe = new Regex(@"(?<placeA>\w+) to (?<placeB>\w+) = (?<distance>\d+)",
+            RegexOptions.Compiled);
+
+        #endregion
+
+        #region | Properties & fields
+
+        public string PlaceA { get; }
+        public string PlaceB { get; }
+        public int Distance { get; }
+
+        #endregion
+
+        #region | ctors
+
+        private Direction(string placeA, string placeB, int distance)
         {
             PlaceA = placeA;
             PlaceB = placeB;
             Distance = distance;
         }
 
-        public string PlaceA { get; set; }
-        public string PlaceB { get; set; }
-        public int Distance { get; set; }
+        #endregion
+
+        #region | Public interface
 
         public static Direction Parse(string line)
         {
-            var match = navigRE.Match(line);
+            var match = NavigRe.Match(line);
             if (!match.Success)
                 throw new ArgumentException($"Bad direction {line}");
 
@@ -35,5 +50,7 @@ namespace AdventOfCode.Day09
             var distance = int.Parse(rawDistance);
             return new Direction(placeA, placeB, distance);
         }
+
+        #endregion
     }
 }
