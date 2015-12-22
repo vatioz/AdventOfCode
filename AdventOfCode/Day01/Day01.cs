@@ -4,9 +4,11 @@ namespace AdventOfCode.Day01
 {
     public class Day01 : IAdventDay
     {
+        #region | Public interface
+
         public int WhatFloorShouldSantaGoIn(string brackets)
         {
-            int actualFloor = 0;
+            var actualFloor = 0;
             foreach (var bracket in brackets)
             {
                 if (bracket == '(')
@@ -20,8 +22,8 @@ namespace AdventOfCode.Day01
 
         public int WhatIndexIsLeadingIntoTheBasement(string brackets)
         {
-            int actualFloor = 0;
-            int actualIndex = 0;
+            var actualFloor = 0;
+            var actualIndex = 0;
             foreach (var bracket in brackets)
             {
                 actualIndex++;
@@ -38,9 +40,16 @@ namespace AdventOfCode.Day01
             return actualIndex;
         }
 
+        #endregion
+
+        #region  | Interface members
+
         public string SolvePartOne() => WhatFloorShouldSantaGoIn(Day01Input.BRACKETS).ToString();
 
         public string SolvePartTwo() => WhatIndexIsLeadingIntoTheBasement(Day01Input.BRACKETS).ToString();
-        public string PuzzleName { get { return "Not Quite Lisp"; } }
+
+        public string PuzzleName => "Not Quite Lisp";
+
+        #endregion
     }
 }
