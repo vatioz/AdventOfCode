@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using AdventOfCode.Shared;
+﻿using AdventOfCode.Shared;
+using System.Collections.Generic;
 
 namespace AdventOfCode.Day08
 {
