@@ -4,6 +4,8 @@ namespace AdventOfCode.Day02
 {
     public class Day02 : IAdventDay
     {
+        #region | Public interface
+
         public int CountAllAreas(string input)
         {
             var sum = 0;
@@ -16,9 +18,6 @@ namespace AdventOfCode.Day02
 
             return sum;
         }
-
-
-
 
         public int CountAllRibbons(string input)
         {
@@ -33,9 +32,16 @@ namespace AdventOfCode.Day02
             return sum;
         }
 
+        #endregion
+
+        #region  | Interface members
+
+        public string PuzzleName => "I Was Told There Would Be No Math";
+
         public string SolvePartOne() => CountAllAreas(Day02Input.RAW_AREAS).ToString();
 
         public string SolvePartTwo() => CountAllRibbons(Day02Input.RAW_AREAS).ToString();
-        public string PuzzleName => "I Was Told There Would Be No Math";
+
+        #endregion
     }
 }
