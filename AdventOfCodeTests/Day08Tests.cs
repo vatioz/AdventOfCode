@@ -1,6 +1,7 @@
 ﻿using AdventOfCode.Shared;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using AdventOfCode.Day08;
 
@@ -14,7 +15,7 @@ namespace AdventOfCodeTests
         [TestFixtureSetUp]
         public void SetUp()
         {
-            lines = FileLineParser.GetAllLines(@"Day08\Day08TestInput.txt");
+            lines = FileLineParser.GetAllLines($@"Day08{Path.DirectorySeparatorChar}Day08TestInput.txt");
         }
         
         [TestCase(0, 2, 0, Description = "empty line")]

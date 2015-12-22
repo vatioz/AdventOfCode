@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using AdventOfCode.Day08;
 using AdventOfCode.Day09;
@@ -18,7 +19,7 @@ namespace AdventOfCodeTests
         [TestFixtureSetUp]
         public void SetUp()
         {
-            d = new Day09(@"Day09\Day09TestInput.txt");
+            d = new Day09($@"Day09{Path.DirectorySeparatorChar}Day09TestInput.txt");
         }
 
         [Test]
