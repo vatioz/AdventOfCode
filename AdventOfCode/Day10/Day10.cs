@@ -6,18 +6,28 @@ namespace AdventOfCode.Day10
 {
     public class Day10 : IAdventDay
     {
+        #region |  Constants
+
         private const int NUMBER_OF_ITERATIONS_PART1 = 40;
         private const int NUMBER_OF_ITERATIONS_PART2 = 50;
 
+        #endregion
+
+        #region | Properties & fields
+
         private StringBuilder nextSequence;
+
+        #endregion
+
+        #region | Public interface
 
         public string LookAndSay(string sequence)
         {
             nextSequence = new StringBuilder();
-            for (int i = 0; i < sequence.Length; i++)
+            for (var i = 0; i < sequence.Length; i++)
             {
-                char actualDigit = sequence[i];
-                int numberOfRepeats = 1;
+                var actualDigit = sequence[i];
+                var numberOfRepeats = 1;
                 while ((i + 1 < sequence.Length) && actualDigit == sequence[i + 1])
                 {
                     i++;
@@ -32,7 +42,7 @@ namespace AdventOfCode.Day10
 
         public string RepeatedLookAndSay(string startingSequence, int iterations)
         {
-            for (int i = 0; i < iterations; i++)
+            for (var i = 0; i < iterations; i++)
             {
                 startingSequence = LookAndSay(startingSequence);
                 Debug.WriteLine($"Iteration {i} done.");
@@ -40,6 +50,10 @@ namespace AdventOfCode.Day10
 
             return startingSequence;
         }
+
+        #endregion
+
+        #region  | Interface members
 
         public string SolvePartOne()
         {
@@ -54,5 +68,7 @@ namespace AdventOfCode.Day10
         }
 
         public string PuzzleName => "Elves Look, Elves Say";
+
+        #endregion
     }
 }
