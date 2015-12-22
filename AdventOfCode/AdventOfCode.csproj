@@ -49,7 +49,9 @@
     <Compile Include="Day02\Present.cs" />
     <Compile Include="Day03\Day03.cs" />
     <Compile Include="Day03\Day03Input.cs" />
+    <Compile Include="Day03\HouseTour.cs" />
     <Compile Include="Day03\Position.cs" />
+    <Compile Include="Day03\Santa.cs" />
     <Compile Include="Day04\Day04.cs" />
     <Compile Include="Day05\Day05.cs" />
     <Compile Include="Day05\Day05Input.cs" />

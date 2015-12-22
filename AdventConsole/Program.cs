@@ -9,6 +9,7 @@ using AdventOfCode.Shared;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using AdventOfCode.Day03;
 
 namespace AdventConsole
 {
@@ -19,7 +20,7 @@ namespace AdventConsole
             List<IAdventDay> advent = new List<IAdventDay>();
             advent.Add(new Day01());
             advent.Add(new Day02());
-            //advent.Add(new Day03()); // this one is slow
+            advent.Add(new Day03());
             //advent.Add(new Day04()); // this one is very slow
             advent.Add(new Day05());
             //advent.Add(new Day06()); // slow
