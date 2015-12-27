@@ -13,7 +13,10 @@ namespace AdventOfCode.Day12
 
         public string SolvePartOne()
         {
-            return "Not yet";
+            var input = FileParser.GetAllText("Day12/Day12Input.txt");
+            var parser = new JSONNumberParser();
+            var sum = parser.GetAllNumbers(input).Aggregate((a, b) => a + b);
+            return sum.ToString();
         }
 
         public string SolvePartTwo()
