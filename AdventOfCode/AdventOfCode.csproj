@@ -82,6 +82,8 @@
     <Compile Include="Day10\Day10.cs" />
     <Compile Include="Day11\Day11.cs" />
     <Compile Include="Day11\PasswordGenerator.cs" />
+    <Compile Include="Day12\Day12.cs" />
+    <Compile Include="Day12\Day12Input.cs" />
     <Compile Include="Shared\FileLineParser.cs" />
     <Compile Include="Shared\IAdventDay.cs" />
     <Compile Include="Shared\InputLineParser.cs" />
