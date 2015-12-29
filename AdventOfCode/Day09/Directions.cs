@@ -5,19 +5,22 @@ namespace AdventOfCode.Day09
 {
     public class Directions
     {
+        #region | Properties & fields
+
+        public List<Direction> ParsedDirections { get; }
+
+        #endregion
+
+        #region | ctors
+
         public Directions()
         {
             ParsedDirections = new List<Direction>();
         }
 
-        #region | Parsing the file
+        #endregion
 
-        public List<Direction> ParsedDirections { get; }
-
-        private IEnumerable<string> GetLines(string path)
-        {
-            return FileLineParser.GetAllLines(path);
-        }
+        #region | Public interface
 
         public void LoadDirections(string path)
         {
@@ -29,7 +32,14 @@ namespace AdventOfCode.Day09
             }
         }
 
+        #endregion
 
+        #region | Non-public members
+
+        private IEnumerable<string> GetLines(string path)
+        {
+            return FileLineParser.GetAllLines(path);
+        }
 
         #endregion
     }

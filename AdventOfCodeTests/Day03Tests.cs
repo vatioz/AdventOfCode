@@ -12,7 +12,7 @@ namespace AdventOfCodeTests
         public void WalkThroughHouses(string directions, int expectedHouseCount)
         {
             var d03 = new Day03();
-            var houseCount = d03.CountHousesWithPresent(directions);
+            var houseCount = d03.CountHousesWithPresent(directions, 1);
 
             Assert.That(houseCount, Is.EqualTo(expectedHouseCount));
         }
@@ -25,7 +25,7 @@ namespace AdventOfCodeTests
         public void RoboWalkThroughHouses(string directions, int expectedHouseCount)
         {
             var d03 = new Day03();
-            var houseCount = d03.CountHousesWithPresentRobo(directions);
+            var houseCount = d03.CountHousesWithPresent(directions, 2);
 
             Assert.That(houseCount, Is.EqualTo(expectedHouseCount));
         }

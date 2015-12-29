@@ -6,6 +6,16 @@ namespace AdventOfCode.Day09
 {
     public class Day09 : IAdventDay
     {
+        #region | Properties & fields
+
+        private readonly Dictionary<string, int> _distances;
+
+        private readonly Map _graphMap;
+
+        private readonly Stack<Place> _visited;
+        private int _sum;
+
+        #endregion
 
         #region | ctors
 
@@ -27,19 +37,7 @@ namespace AdventOfCode.Day09
 
         #endregion
 
-        #region | Fields and properties
-
-        private readonly Map _graphMap;
-
-        private readonly Stack<Place> _visited;
-        private readonly Dictionary<string, int> _distances;
-        private int _sum;
-
-        #endregion
-
-
-
-        #region | Main interface and logic
+        #region | Public interface
 
         public int FindShortestConnection()
         {
@@ -56,6 +54,10 @@ namespace AdventOfCode.Day09
             var min = _distances.Max(kvp => kvp.Value);
             return min;
         }
+
+        #endregion
+
+        #region | Non-public members
 
         private void FindAllFullConnections()
         {
@@ -96,7 +98,7 @@ namespace AdventOfCode.Day09
 
         #endregion
 
-        #region | IAdventDay interface
+        #region  | Interface members
 
         public string SolvePartOne()
         {
@@ -108,7 +110,7 @@ namespace AdventOfCode.Day09
             return FindLongestConnection().ToString();
         }
 
-        public string PuzzleName { get { return "All in a Single Night"; } }
+        public string PuzzleName => "All in a Single Night";
 
         #endregion
     }

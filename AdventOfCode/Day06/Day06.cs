@@ -4,6 +4,8 @@ namespace AdventOfCode.Day06
 {
     public class Day06 : IAdventDay
     {
+        #region  | Interface members
+
         public string SolvePartOne()
         {
             var grid = new BinaryLightingGrid();
@@ -30,6 +32,8 @@ namespace AdventOfCode.Day06
             return grid.HowManyLightsAreLit().ToString();
         }
 
-        public string PuzzleName { get { return "Probably a Fire Hazard"; } }
+        public string PuzzleName => "Probably a Fire Hazard";
+
+        #endregion
     }
 }

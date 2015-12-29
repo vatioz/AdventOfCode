@@ -5,12 +5,16 @@ namespace AdventOfCode.Day08
 {
     public class Day08 : IAdventDay
     {
-        public IEnumerable<string> ReadFile()
+        #region | Non-public members
+
+        private IEnumerable<string> ReadFile()
         {
             return FileLineParser.GetAllLines(@"Day08\Day08Input.txt");
         }
 
+        #endregion
 
+        #region  | Interface members
 
         public string SolvePartOne()
         {
@@ -26,7 +30,6 @@ namespace AdventOfCode.Day08
             }
 
             return (memoryAllocation - stringAllocation).ToString();
-
         }
 
         public string SolvePartTwo()
@@ -46,5 +49,7 @@ namespace AdventOfCode.Day08
         }
 
         public string PuzzleName => "Matchsticks";
+
+        #endregion
     }
 }

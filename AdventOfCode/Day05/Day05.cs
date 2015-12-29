@@ -1,16 +1,20 @@
 ﻿using AdventOfCode.Shared;
-using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 
 namespace AdventOfCode.Day05
 {
     public class Day05 : IAdventDay
     {
+        #region | Properties & fields
 
-        private char[] vovels = new[] { 'a', 'e', 'i', 'o', 'u' };
-        private string[] banned = new[] { "ab", "cd", "pq", "xy" };
+        private readonly string[] _bannedDoubles = { "ab", "cd", "pq", "xy" };
+
+        private readonly char[] _vovels = { 'a', 'e', 'i', 'o', 'u' };
+
+        #endregion
+
+        #region | Public interface
 
         public bool IsWordNice(string word)
         {
@@ -34,15 +38,18 @@ namespace AdventOfCode.Day05
             return true;
         }
 
+        #endregion
+
+        #region | Non-public members
+
         private bool ContainsDoubleWithOneCharInTheMiddle(string word)
         {
-            for (int i = 0; i < word.Length - 2; i++)
+            for (var i = 0; i < word.Length - 2; i++)
             {
                 var first = word[i];
-                var middle = word[i + 1];
-                var last = word[i + 2];
+                var third = word[i + 2];
 
-                if (first == last)
+                if (first == third)
                     return true;
             }
 
@@ -52,13 +59,12 @@ namespace AdventOfCode.Day05
         private List<string> GetAllDoubles(string word)
         {
             var doubles = new List<string>();
-            for (int i = 0; i < word.Length - 1; i++)
+            for (var i = 0; i < word.Length - 1; i++)
             {
                 var letter = word[i];
                 var nextLetter = word[i + 1];
 
                 doubles.Add($"{letter}{nextLetter}");
-
             }
 
             return doubles;
@@ -68,36 +74,30 @@ namespace AdventOfCode.Day05
         {
             var doubles = GetAllDoubles(word);
             var duplicates = doubles.GroupBy(x => x)
-                             .Where(g => g.Count() > 1)
-                             .Select(g => g.Key)
-                             .ToList();
-            if (duplicates.Any())
-            {
-                foreach (var pair in duplicates)
-                {
-                    var modifiedWord = word.Replace(pair, "");
-                    if (modifiedWord.Length <= word.Length - 4)
-                        return true;
+                .Where(g => g.Count() > 1)
+                .Select(g => g.Key)
+                .ToList();
 
-                }
+            if (!duplicates.Any())
+                return false;
+
+            foreach (var pair in duplicates)
+            {
+                var modifiedWord = word.Replace(pair, ""); // remove this duplicate
+                if (modifiedWord.Length <= word.Length - 4) // only if we removed more than 4 chars, we got at least two doubles
+                    return true;
             }
             return false;
         }
 
         private bool ContainsBannedStrings(string word)
         {
-            foreach (var ban in banned)
-            {
-                if (word.Contains(ban))
-                    return true;
-            }
-
-            return false;
+            return _bannedDoubles.Any(word.Contains);
         }
 
         private bool ContainsDoubledLetter(string word)
         {
-            for (int i = 0; i < word.Length - 1; i++)
+            for (var i = 0; i < word.Length - 1; i++)
             {
                 var letter = word[i];
                 var nextLetter = word[i + 1];
@@ -111,32 +111,30 @@ namespace AdventOfCode.Day05
 
         private bool ContainsThreeVovels(string word)
         {
-            int vovelCount = 0;
-            foreach (var letter in word)
-            {
-                if (vovels.Contains(letter))
-                    vovelCount++;
-            }
+            var vovelCount = word.Count(letter => _vovels.Contains(letter));
             return vovelCount >= 3;
         }
 
-        public string ParseInput(Func<string, bool> part, string lines)
-        {
-            var sr = new StringReader(lines);
-            string line;
-            int sum = 0;
-            while ((line = sr.ReadLine()) != null)
-            {
-                if (part(line))
-                    sum++;
-            }
+        #endregion
 
-            return sum.ToString();
+        #region  | Interface members
+
+        public string SolvePartOne()
+        {
+            var lines = InputLineParser.GetAllLines(Day05Input.WORDS);
+            var niceWordsCount = lines.Where(IsWordNice).Count();
+            return niceWordsCount.ToString();
         }
 
-        public string SolvePartOne() => ParseInput(IsWordNice, Day05Input.WORDS);
+        public string SolvePartTwo()
+        {
+            var lines = InputLineParser.GetAllLines(Day05Input.WORDS);
+            var niceWordsCount = lines.Where(IsWordReallyNice).Count();
+            return niceWordsCount.ToString();
+        }
 
-        public string SolvePartTwo() => ParseInput(IsWordReallyNice, Day05Input.WORDS);
-        public string PuzzleName { get { return "Doesn't He Have Intern-Elves For This?"; } }
+        public string PuzzleName => "Doesn't He Have Intern-Elves For This?";
+
+        #endregion
     }
 }

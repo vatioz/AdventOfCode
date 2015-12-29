@@ -1,11 +1,22 @@
-using System;
+using System.Diagnostics;
 
 namespace AdventOfCode.Day03
 {
-    public struct Position
+    [DebuggerDisplay("{X},{Y}")]
+    public class Position
     {
+        #region | Properties & fields
+
         public int X { get; set; }
         public int Y { get; set; }
+
+        #endregion
+
+        #region | ctors
+
+        public Position() : this(0, 0)
+        {
+        }
 
         public Position(int x, int y)
         {
@@ -13,21 +24,13 @@ namespace AdventOfCode.Day03
             Y = y;
         }
 
-        public void Move(char arrow)
+        public Position(Position toCopy) : this(toCopy.X, toCopy.Y)
         {
-            if (arrow == '^')
-                Y++;
-            else if (arrow == 'v')
-                Y--;
-            else if (arrow == '>')
-                X++;
-            else if (arrow == '<')
-                X--;
-            else if (arrow == ' ') // ugly ugly ugly
-            { } // still ugly
-            else
-                throw new NotImplementedException("Bad arrow");
         }
+
+        #endregion
+
+        #region | Overrides
 
         public override bool Equals(object obj)
         {
@@ -39,5 +42,7 @@ namespace AdventOfCode.Day03
         {
             return $"{X}:{Y}".GetHashCode();
         }
+
+        #endregion
     }
 }

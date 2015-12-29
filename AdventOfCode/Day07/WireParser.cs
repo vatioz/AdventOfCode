@@ -1,20 +1,27 @@
+using AdventOfCode.Day07.SignalProviders;
 using System.Text.RegularExpressions;
 
 namespace AdventOfCode.Day07
 {
-    public class WireParser
+    public static class WireParser
     {
-        private static Regex wireConnectionRE = new Regex(@"(?<provider>.*) -> (?<wire>\w+)");
+        #region |  Constants
 
+        private static readonly Regex _wireConnectionRE = new Regex(@"(?<provider>.*) -> (?<wire>\w+)");
 
-        public static Wire ParseWire(string line)
+        #endregion
+
+        #region | Public interface
+
+        public static Wire ParseWire(Circut circut, string line)
         {
-            var match = wireConnectionRE.Match(line);
+            var match = _wireConnectionRE.Match(line);
             var wireName = match.Groups["wire"].Value;
             var rawProvider = match.Groups["provider"].Value;
 
-            //Debug.WriteLine($"Parsed wire {wireName}");
-            return new Wire(wireName, rawProvider);
+            return new Wire(circut, wireName, rawProvider);
         }
+
+        #endregion
     }
 }
