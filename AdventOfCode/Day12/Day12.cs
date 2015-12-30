@@ -1,5 +1,6 @@
 ﻿using AdventOfCode.Shared;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
 
@@ -69,6 +70,8 @@ namespace AdventOfCode.Day12
                 sum = SumupArray((object[])member, sum);
             else if (member is int)
                 sum = (int)member;
+            else if (member is ArrayList)
+                sum = SumupArray(((ArrayList)member).ToArray(), sum);
             else
                 throw new Exception("WTF is this " + member);
             return sum;
