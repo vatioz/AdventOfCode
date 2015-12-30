@@ -1,8 +1,6 @@
 ﻿using AdventOfCode.Shared;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web.Helpers;
 using System.Web.Script.Serialization;
 
 
@@ -17,8 +15,6 @@ namespace AdventOfCode.Day12
         public string SolvePartOne()
         {
             var input = FileParser.GetAllText("Day12/Day12Input.txt");
-            //var parser = new JSONNumberParser();
-            //var sum = parser.GetAllNumbers(input).Aggregate((a, b) => a + b);
             RED_MODE = false;
             var sum = GetSum(input);
             return sum.ToString();
@@ -39,9 +35,6 @@ namespace AdventOfCode.Day12
             var input = FileParser.GetAllText("Day12/Day12Input.txt");
             RED_MODE = true;
             var sum = GetSum(input);
-            //object json = Json.Decode(input);
-            //Type typeOfDynamic = json.GetType();
-            //bool exist = typeOfDynamic.GetProperties().Any(p => p.Name.Equals("red"));
             return sum.ToString();
         }
 
@@ -71,11 +64,11 @@ namespace AdventOfCode.Day12
             if (member is string)
                 return sum;
             else if (member is Dictionary<string, object>)
-                sum = SumupLevel((Dictionary<string, object>) member, sum);
+                sum = SumupLevel((Dictionary<string, object>)member, sum);
             else if (member is object[])
-                sum = SumupArray((object[]) member, sum);
+                sum = SumupArray((object[])member, sum);
             else if (member is int)
-                sum = (int) member;
+                sum = (int)member;
             else
                 throw new Exception("WTF is this " + member);
             return sum;
