@@ -86,6 +86,7 @@
     <Compile Include="Day10Tests.cs" />
     <Compile Include="Day11Tests.cs" />
     <Compile Include="Day12Tests.cs" />
+    <Compile Include="Day13Tests.cs" />
     <Compile Include="InputLineParserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
