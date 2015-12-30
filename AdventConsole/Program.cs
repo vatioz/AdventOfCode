@@ -24,13 +24,13 @@ namespace AdventConsole
             advent.Add(new Day01());
             advent.Add(new Day02());
             advent.Add(new Day03());
-            advent.Add(new Day04()); // this one is very slow
+            //advent.Add(new Day04()); // this one is very slow
             advent.Add(new Day05());
             //advent.Add(new Day06()); // slow
             advent.Add(new Day07());
             advent.Add(new Day08());
             advent.Add(new Day09());
-            advent.Add(new Day10());
+            //advent.Add(new Day10());
             advent.Add(new Day11());
             advent.Add(new Day12());
 
