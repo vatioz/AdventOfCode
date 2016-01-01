@@ -91,7 +91,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Compile Include="Day12\JSONNumberParser.cs" />
+    <Compile Include="Day13\Attendee.cs" />
     <Compile Include="Day13\Day13.cs" />
+    <Compile Include="Day13\Day13Input.cs" />
+    <Compile Include="Day13\EnumerableExtensions.cs" />
+    <Compile Include="Day13\Host.cs" />
+    <Compile Include="Day13\PersonalityParser.cs" />
+    <Compile Include="Day13\Seat.cs" />
+    <Compile Include="Day13\Table.cs" />
     <Compile Include="Shared\FileLineParser.cs" />
     <Compile Include="Shared\FileParser.cs" />
     <Compile Include="Shared\IAdventDay.cs" />
