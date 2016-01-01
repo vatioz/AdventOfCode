@@ -24,6 +24,7 @@ namespace AdventOfCode.Day13
             lastSeated.Left = newlySeated;
             newlySeated.Right = lastSeated;
 
+            Seats.Add(newlySeated);
             CloseCircularity(newlySeated);
         }
 
@@ -34,6 +35,10 @@ namespace AdventOfCode.Day13
         private void CloseCircularity(Seat newlySeated)
         {
             var firstSeated = Seats.First();
+
+            //if (firstSeated == null)
+            //    firstSeated = newlySeated;
+
             firstSeated.Right = newlySeated;
             newlySeated.Left = firstSeated;
         }
@@ -42,6 +47,11 @@ namespace AdventOfCode.Day13
         public int GetTotalHappiness()
         {
             return Seats.Sum(seat => seat.OverallHappiness);
+        }
+
+        public void PrepareTable()
+        {
+            Seats.Clear();
         }
     }
 }

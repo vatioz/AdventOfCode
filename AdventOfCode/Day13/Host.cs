@@ -1,4 +1,5 @@
 ﻿using AdventOfCode.Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,6 +14,7 @@ namespace AdventOfCode.Day13
         public Host()
         {
             PreparedTable = new Table();
+            Attendees = new List<Attendee>();
         }
 
 
@@ -36,21 +38,27 @@ namespace AdventOfCode.Day13
             }
         }
 
-        public void TryAllSeatingPlans()
+        public int TryAllSeatingPlans()
         {
+            int maxHappiness = 0;
             var seatingPlans = EnumerableHelpers.GetPermutations(Attendees, Attendees.Count);
             foreach (var seatingPlan in seatingPlans)
             {
-                SeatEverybody(seatingPlan);
+                PreparedTable.PrepareTable();
+                var happiness = SeatEverybody(seatingPlan);
+                maxHappiness = Math.Max(happiness, maxHappiness);
             }
+
+            return maxHappiness;
         }
 
-        public void SeatEverybody(IEnumerable<Attendee> seatingPlan)
+        public int SeatEverybody(IEnumerable<Attendee> seatingPlan)
         {
             foreach (var attendee in seatingPlan)
             {
                 PreparedTable.SeatNextOne(attendee);
             }
+            return PreparedTable.GetTotalHappiness();
         }
     }
 }

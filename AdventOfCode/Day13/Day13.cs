@@ -6,7 +6,10 @@ namespace AdventOfCode.Day13
     {
         public string SolvePartOne()
         {
-            return "Not yet";
+            var host = new Host();
+            host.NoticePersonalities(Day13Input.HAPPINESS);
+            var maxHappiness = host.TryAllSeatingPlans();
+            return maxHappiness.ToString();
         }
 
         public string SolvePartTwo()

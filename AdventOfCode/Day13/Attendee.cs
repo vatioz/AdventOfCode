@@ -17,6 +17,7 @@ namespace AdventOfCode.Day13
         public Attendee(string name)
         {
             Name = name;
+            PotencialHapinnes = new Dictionary<string, int>();
         }
 
         #endregion
