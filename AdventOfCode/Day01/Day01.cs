@@ -44,9 +44,9 @@ namespace AdventOfCode.Day01
 
         #region  | Interface members
 
-        public string SolvePartOne() => WhatFloorShouldSantaGoIn(Day01Input.BRACKETS).ToString();
+        public object SolvePartOne() => WhatFloorShouldSantaGoIn(Day01Input.BRACKETS);
 
-        public string SolvePartTwo() => WhatIndexIsLeadingIntoTheBasement(Day01Input.BRACKETS).ToString();
+        public object SolvePartTwo() => WhatIndexIsLeadingIntoTheBasement(Day01Input.BRACKETS);
 
         public string PuzzleName => "Not Quite Lisp";
 

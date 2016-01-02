@@ -6,7 +6,7 @@ namespace AdventOfCode.Day07
     {
         #region  | Interface members
 
-        public string SolvePartOne()
+        public object SolvePartOne()
         {
             var circut = new Circut();
             var lines = InputLineParser.GetAllLines(Day07Input.BOOKLET);
@@ -17,10 +17,10 @@ namespace AdventOfCode.Day07
             }
 
             var wireA = circut.AllWires["a"];
-            return wireA.GetValue().ToString();
+            return wireA.GetValue();
         }
 
-        public string SolvePartTwo()
+        public object SolvePartTwo()
         {
             var circut = new Circut();
             var inputPartOne = Day07Input.BOOKLET;
@@ -33,7 +33,7 @@ namespace AdventOfCode.Day07
             }
 
             var wireA = circut.AllWires["a"];
-            return wireA.GetValue().ToString();
+            return wireA.GetValue();
         }
 
         public string PuzzleName => "Some Assembly Required";

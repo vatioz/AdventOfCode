@@ -33,9 +33,9 @@ namespace AdventOfCode.Day04
 
         #region  | Interface members
 
-        public string SolvePartOne() => FindNumberProducingHashWithLeadingZeroes("bgvyzdsv");
+        public object SolvePartOne() => FindNumberProducingHashWithLeadingZeroes("bgvyzdsv");
 
-        public string SolvePartTwo() => FindNumberProducingHashWithLeadingZeroes("bgvyzdsv", 6);
+        public object SolvePartTwo() => FindNumberProducingHashWithLeadingZeroes("bgvyzdsv", 6);
 
         public string PuzzleName => "The Ideal Stocking Stuffer";
 

@@ -38,9 +38,9 @@ namespace AdventOfCode.Day02
 
         public string PuzzleName => "I Was Told There Would Be No Math";
 
-        public string SolvePartOne() => CountAllAreas(Day02Input.RAW_AREAS).ToString();
+        public object SolvePartOne() => CountAllAreas(Day02Input.RAW_AREAS);
 
-        public string SolvePartTwo() => CountAllRibbons(Day02Input.RAW_AREAS).ToString();
+        public object SolvePartTwo() => CountAllRibbons(Day02Input.RAW_AREAS);
 
         #endregion
     }

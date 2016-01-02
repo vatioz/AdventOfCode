@@ -16,7 +16,7 @@ namespace AdventOfCode.Day08
 
         #region  | Interface members
 
-        public string SolvePartOne()
+        public object SolvePartOne()
         {
             var memoryAllocation = 0;
             var stringAllocation = 0;
@@ -29,10 +29,10 @@ namespace AdventOfCode.Day08
                 stringAllocation += unescaped.Length;
             }
 
-            return (memoryAllocation - stringAllocation).ToString();
+            return (memoryAllocation - stringAllocation);
         }
 
-        public string SolvePartTwo()
+        public object SolvePartTwo()
         {
             var memoryAllocation = 0;
             var stringAllocation = 0;
@@ -45,7 +45,7 @@ namespace AdventOfCode.Day08
                 memoryAllocation += reescaped.Length;
             }
 
-            return (memoryAllocation - stringAllocation).ToString();
+            return (memoryAllocation - stringAllocation);
         }
 
         public string PuzzleName => "Matchsticks";

@@ -6,7 +6,7 @@ namespace AdventOfCode.Day06
     {
         #region  | Interface members
 
-        public string SolvePartOne()
+        public object SolvePartOne()
         {
             var grid = new BinaryLightingGrid();
             var lines = InputLineParser.GetAllLines(Day06Input.INSTRUCTIONS);
@@ -16,10 +16,10 @@ namespace AdventOfCode.Day06
                 grid.ProcessInstruction(instruction);
             }
 
-            return grid.HowManyLightsAreLit().ToString();
+            return grid.HowManyLightsAreLit();
         }
 
-        public string SolvePartTwo()
+        public object SolvePartTwo()
         {
             var grid = new ShadingLightingGrid();
             var lines = InputLineParser.GetAllLines(Day06Input.INSTRUCTIONS);
@@ -29,7 +29,7 @@ namespace AdventOfCode.Day06
                 grid.ProcessInstruction(instruction);
             }
 
-            return grid.HowManyLightsAreLit().ToString();
+            return grid.HowManyLightsAreLit();
         }
 
         public string PuzzleName => "Probably a Fire Hazard";

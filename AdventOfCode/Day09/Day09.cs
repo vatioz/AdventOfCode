@@ -100,14 +100,14 @@ namespace AdventOfCode.Day09
 
         #region  | Interface members
 
-        public string SolvePartOne()
+        public object SolvePartOne()
         {
-            return FindShortestConnection().ToString();
+            return FindShortestConnection();
         }
 
-        public string SolvePartTwo()
+        public object SolvePartTwo()
         {
-            return FindLongestConnection().ToString();
+            return FindLongestConnection();
         }
 
         public string PuzzleName => "All in a Single Night";

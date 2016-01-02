@@ -119,18 +119,18 @@ namespace AdventOfCode.Day05
 
         #region  | Interface members
 
-        public string SolvePartOne()
+        public object SolvePartOne()
         {
             var lines = InputLineParser.GetAllLines(Day05Input.WORDS);
             var niceWordsCount = lines.Where(IsWordNice).Count();
-            return niceWordsCount.ToString();
+            return niceWordsCount;
         }
 
-        public string SolvePartTwo()
+        public object SolvePartTwo()
         {
             var lines = InputLineParser.GetAllLines(Day05Input.WORDS);
             var niceWordsCount = lines.Where(IsWordReallyNice).Count();
-            return niceWordsCount.ToString();
+            return niceWordsCount;
         }
 
         public string PuzzleName => "Doesn't He Have Intern-Elves For This?";

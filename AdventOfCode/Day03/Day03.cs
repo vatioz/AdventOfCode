@@ -22,9 +22,9 @@ namespace AdventOfCode.Day03
 
         #region  | Interface members
 
-        public string SolvePartOne() => CountHousesWithPresent(Day03Input.ARROWS, 1).ToString();
+        public object SolvePartOne() => CountHousesWithPresent(Day03Input.ARROWS, 1);
 
-        public string SolvePartTwo() => CountHousesWithPresent(Day03Input.ARROWS, 2).ToString();
+        public object SolvePartTwo() => CountHousesWithPresent(Day03Input.ARROWS, 2);
 
         public string PuzzleName => "Perfectly Spherical Houses in a Vacuum";
 

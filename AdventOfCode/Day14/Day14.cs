@@ -6,7 +6,7 @@ namespace AdventOfCode.Day14
 {
     public class Day14 : IAdventDay
     {
-        public string SolvePartOne()
+        public object SolvePartOne()
         {
             var lines = InputLineParser.GetAllLines(Day14Input.REINDEERS);
             var track = new Track();
@@ -21,10 +21,10 @@ namespace AdventOfCode.Day14
 
             var distance = track.GetLeadersByTraveledDistance().Max(r => r.TraveledDistance);
 
-            return distance.ToString();
+            return distance;
         }
 
-        public string SolvePartTwo()
+        public object SolvePartTwo()
         {
             var lines = InputLineParser.GetAllLines(Day14Input.REINDEERS);
             var track = new Track();
@@ -47,7 +47,7 @@ namespace AdventOfCode.Day14
 
             var winner = track.GetWinnerByScore();
 
-            return winner.Score.ToString();
+            return winner.Score;
         }
 
         public string PuzzleName => "Reindeer Olympics";

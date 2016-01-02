@@ -13,12 +13,12 @@ namespace AdventOfCode.Day12
 
         public string PuzzleName => "JSAbacusFramework.io";
 
-        public string SolvePartOne()
+        public object SolvePartOne()
         {
             var input = FileParser.GetAllText("Day12/Day12Input.txt");
             RED_MODE = false;
             var sum = GetSum(input);
-            return sum.ToString();
+            return sum;
         }
 
         public int GetSum(string input)
@@ -31,12 +31,12 @@ namespace AdventOfCode.Day12
             return sum;
         }
 
-        public string SolvePartTwo()
+        public object SolvePartTwo()
         {
             var input = FileParser.GetAllText("Day12/Day12Input.txt");
             RED_MODE = true;
             var sum = GetSum(input);
-            return sum.ToString();
+            return sum;
         }
 
 

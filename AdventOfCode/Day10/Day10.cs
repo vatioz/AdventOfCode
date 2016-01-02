@@ -55,16 +55,16 @@ namespace AdventOfCode.Day10
 
         #region  | Interface members
 
-        public string SolvePartOne()
+        public object SolvePartOne()
         {
             var resultSeq = RepeatedLookAndSay("3113322113", NUMBER_OF_ITERATIONS_PART1);
-            return resultSeq.Length.ToString();
+            return resultSeq.Length;
         }
 
-        public string SolvePartTwo()
+        public object SolvePartTwo()
         {
             var resultSeq = RepeatedLookAndSay("3113322113", NUMBER_OF_ITERATIONS_PART2);
-            return resultSeq.Length.ToString();
+            return resultSeq.Length;
         }
 
         public string PuzzleName => "Elves Look, Elves Say";

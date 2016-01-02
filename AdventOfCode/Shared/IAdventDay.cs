@@ -2,8 +2,8 @@
 {
     public interface IAdventDay
     {
-        string SolvePartOne();
-        string SolvePartTwo();
+        object SolvePartOne();
+        object SolvePartTwo();
 
         string PuzzleName { get; }
 

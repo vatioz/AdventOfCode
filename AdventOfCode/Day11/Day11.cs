@@ -11,14 +11,14 @@ namespace AdventOfCode.Day11
     {
         public string PuzzleName => "CorporatePolicy";
 
-        public string SolvePartOne()
+        public object SolvePartOne()
         {
             var gen = new PasswordGenerator("cqjxjnds");
             gen.GenerateNext();
             return gen.CurrentPassword;
         }
 
-        public string SolvePartTwo()
+        public object SolvePartTwo()
         {
             var gen = new PasswordGenerator("cqjxjnds");
             gen.GenerateNext();
