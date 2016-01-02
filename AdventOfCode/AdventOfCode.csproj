@@ -104,25 +104,24 @@
     <Compile Include="Day13\PersonalityParser.cs" />
     <Compile Include="Day13\Seat.cs" />
     <Compile Include="Day13\Table.cs" />
+    <Compile Include="Day15\Day15.cs" />
+    <Compile Include="Day16\Day16.cs" />
+    <Compile Include="Day17\Day17.cs" />
+    <Compile Include="Day18\Day18.cs" />
+    <Compile Include="Day19\Day19.cs" />
+    <Compile Include="Day20\Day20.cs" />
+    <Compile Include="Day21\Day21.cs" />
+    <Compile Include="Day22\Day22.cs" />
+    <Compile Include="Day23\Day23.cs" />
+    <Compile Include="Day24\Day24.cs" />
+    <Compile Include="Day25\Day25.cs" />
     <Compile Include="Shared\FileLineParser.cs" />
     <Compile Include="Shared\FileParser.cs" />
     <Compile Include="Shared\IAdventDay.cs" />
     <Compile Include="Shared\InputLineParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Day15\" />
-    <Folder Include="Day16\" />
-    <Folder Include="Day17\" />
-    <Folder Include="Day18\" />
-    <Folder Include="Day19\" />
-    <Folder Include="Day20\" />
-    <Folder Include="Day21\" />
-    <Folder Include="Day22\" />
-    <Folder Include="Day23\" />
-    <Folder Include="Day24\" />
-    <Folder Include="Day25\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Day08\Day08Input.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
