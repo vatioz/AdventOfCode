@@ -38,6 +38,17 @@ namespace AdventOfCode.Day13
             }
         }
 
+        public void SeatHostHimself()
+        {
+            var host = new Attendee("Host");
+            foreach (var seatedAttendee in Attendees)
+            {
+                host.PotencialHapinnes.Add(seatedAttendee.Name, 0);
+                seatedAttendee.PotencialHapinnes.Add("Host", 0);
+            }
+            Attendees.Add(host);
+        }
+
         public int TryAllSeatingPlans()
         {
             int maxHappiness = 0;
