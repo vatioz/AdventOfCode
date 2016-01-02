@@ -7,16 +7,15 @@ using AdventOfCode.Day08;
 using AdventOfCode.Day09;
 using AdventOfCode.Day11;
 using AdventOfCode.Day12;
-using AdventOfCode.Day13;
+using AdventOfCode.Day14;
 using AdventOfCode.Shared;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using AdventOfCode.Day14;
 
 namespace AdventConsole
 {
-    class Program
+    public static class Program
     {
         static void Main(string[] args)
         {
@@ -30,10 +29,10 @@ namespace AdventConsole
             advent.Add(new Day07());
             advent.Add(new Day08());
             advent.Add(new Day09());
-            //advent.Add(new Day10());
+            //advent.Add(new Day10()); // slow
             advent.Add(new Day11());
             advent.Add(new Day12());
-            advent.Add(new Day13());
+            //advent.Add(new Day13()); // slow
             advent.Add(new Day14());
 
             var stopwatch = new Stopwatch();
