@@ -1,5 +1,6 @@
 ﻿using AdventOfCode.Shared;
 using System;
+using System.Linq;
 
 namespace AdventOfCode.Day14
 {
@@ -7,22 +8,46 @@ namespace AdventOfCode.Day14
     {
         public string SolvePartOne()
         {
-            int max = 0;
             var lines = InputLineParser.GetAllLines(Day14Input.REINDEERS);
+            var track = new Track();
+
             foreach (var line in lines)
             {
                 var reindeer = ReindeerParser.ParseReindeer(line);
-                reindeer.AdvanceBy(2503);
-                var traveled = reindeer.TraveledDistance;
-                max = Math.Max(traveled, max);
+                track.Commit(reindeer);
             }
 
-            return max.ToString();
+            track.LetThemRunFor(2503);
+
+            var distance = track.GetLeadersByTraveledDistance().Max(r => r.TraveledDistance);
+
+            return distance.ToString();
         }
 
         public string SolvePartTwo()
         {
-            return "Not yet";
+            var lines = InputLineParser.GetAllLines(Day14Input.REINDEERS);
+            var track = new Track();
+
+            foreach (var line in lines)
+            {
+                var reindeer = ReindeerParser.ParseReindeer(line);
+                track.Commit(reindeer);
+            }
+
+            for (int i = 0; i < 2503; i++)
+            {
+                track.AdvanceAllBySecond();
+                var temporaryLeaders = track.GetLeadersByTraveledDistance();
+                foreach (var leader in temporaryLeaders)
+                {
+                    leader.AwardByPoints(1);
+                }
+            }
+
+            var winner = track.GetWinnerByScore();
+
+            return winner.Score.ToString();
         }
 
         public string PuzzleName => "Reindeer Olympics";

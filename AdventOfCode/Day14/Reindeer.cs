@@ -10,15 +10,27 @@ namespace AdventOfCode.Day14
         public int RestingTime { get; set; }
 
         public int TraveledDistance { get; private set; } = 0;
+        public int Score { get; private set; } = 0;
 
-        private void TravelOneRound()
-        {
-            TravelFor(ActiveTime);
-        }
+        private int currentActiveTime;
+        private int currentRestingTime;
 
-        private void TravelFor(int time)
+        public void AdvanceBySecond()
         {
-            TraveledDistance += Speed * time;
+            if (currentActiveTime > 0)
+            {
+                currentActiveTime--;
+                TraveledDistance += Speed;
+            }
+            else if (currentRestingTime > 1)
+            {
+                currentRestingTime--;
+            }
+            else
+            {
+                currentRestingTime = RestingTime;
+                currentActiveTime = ActiveTime;
+            }
         }
 
 
@@ -27,10 +39,17 @@ namespace AdventOfCode.Day14
             Name = name;
             Speed = speed;
             ActiveTime = activeTime;
+            currentActiveTime = activeTime;
             RestingTime = restingTime;
+            currentRestingTime = restingTime;
         }
 
-        public void AdvanceBy(int seconds)
+        public void AwardByPoints(int points)
+        {
+            Score += 1;
+        }
+
+        public void RunFor(int seconds)
         {
             int rounds = seconds / (ActiveTime + RestingTime);
             TraveledDistance = rounds * (Speed * ActiveTime);

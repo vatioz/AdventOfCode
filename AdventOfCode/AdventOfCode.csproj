@@ -96,6 +96,7 @@
     <Compile Include="Day14\Day14Input.cs" />
     <Compile Include="Day14\Reindeer.cs" />
     <Compile Include="Day14\ReindeerParser.cs" />
+    <Compile Include="Day14\Track.cs" />
     <Compile Include="Shared\FileLineParser.cs" />
     <Compile Include="Shared\FileParser.cs" />
     <Compile Include="Shared\IAdventDay.cs" />
